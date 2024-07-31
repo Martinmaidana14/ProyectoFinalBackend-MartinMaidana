@@ -39,18 +39,6 @@ export const register = async (req, res) => {
 
 }
 
-export const logout = async (req, res) => {
-    req.session.destroy(function (e) {
-        if (e) {
-            console.log(e)
-        } else {
-            res.status(200).redirect("/")
-        }
-
-    })
-
-}
-
 export const sessionGithub = async (req, res) => {
     console.log(req)
     req.session.user = {
@@ -68,6 +56,19 @@ export const testJWT = async (req, res) => {
     else
         res.status(200).send(req.user)
 }
+
+export const logout = async (req, res) => {
+    req.session.destroy(function (e) {
+        if (e) {
+            console.log(e)
+        } else {
+            res.status(200).redirect("/")
+        }
+
+    })
+
+}
+
 
 // Cambiar contraseña
 export const changePassword = async(req,res) => {

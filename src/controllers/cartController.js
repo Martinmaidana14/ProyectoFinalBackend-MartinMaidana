@@ -81,6 +81,11 @@ export const createTicket = async (req, res) => {
                 //   0);
                 console.log(cart.products);
 
+                // Usuario premium descontar un 10%
+                if (req.user.rol === 'premium') {
+                    totalPrice *= 0.9;
+                }
+
                 const aux = [...cart.products];
 
                 // Finalizar compra
